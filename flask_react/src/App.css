@@ -1,0 +1,67 @@
+/* General styles */
+.App {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* Center vertically */
+  background-color: #f4f4f4;
+}
+
+.App-header {
+  text-align: center;
+  background-color: #fff;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  width: 90%;
+  max-width: 1000px;
+}
+
+h1 {
+  font-size: 2.5em;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.movies-section {
+  padding: 20px;
+  text-align: left;
+}
+
+.movies-section h2 {
+  font-size: 1.8em;
+  color: #333;
+  margin-bottom: 15px;
+}
+
+.movies-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.movies-table th,
+.movies-table td {
+  padding: 12px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+.movies-table th {
+  background-color: #6200ea;
+  color: white;
+  font-size: 1.1em;
+}
+
+.movies-table tr:hover {
+  background-color: #f1f1f1;
+}
+
+.movies-table td {
+  font-size: 1.1em;
+}
+
+p {
+  font-size: 1.2em;
+  color: #777;
+}
