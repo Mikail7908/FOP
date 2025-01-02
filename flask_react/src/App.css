@@ -1,108 +1,128 @@
-/* General styles */
-.App {
-  font-family: Arial, sans-serif;
-  text-align: center;
-  padding: 20px;
+/* General Styling */
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #f4f7fc;
+  color: #333;
+  margin: 0;
+  padding: 0;
 }
 
-.App-header {
-  background-color: #282c34;
-  color: white;
+.App {
+  max-width: 1000px;
+  margin: 30px auto;
   padding: 20px;
-  margin-bottom: 20px;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 h1 {
   font-size: 2.5em;
-  margin-bottom: 0.5em;
+  color: #333;
+  text-align: center;
+  margin-bottom: 20px;
 }
 
 h2 {
   font-size: 1.5em;
-  margin-top: 0;
+  color: #555;
+  margin-bottom: 10px;
+  border-bottom: 2px solid #eee;
+  padding-bottom: 5px;
 }
 
-/* Add Movie Form */
+/* Form Styling */
 .add-movie-form {
-  background-color: #f9f9f9;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   margin-bottom: 30px;
-  max-width: 600px;
-  margin-left: auto;
-  margin-right: auto;
 }
 
-.add-movie-form input {
-  width: 100%;
-  padding: 10px;
-  margin: 10px 0;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  box-sizing: border-box;
-  font-size: 1em;
-}
-
-.add-movie-form button {
+form input {
   width: 100%;
   padding: 12px;
+  margin: 8px 0;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 1rem;
+  box-sizing: border-box;
+}
+
+form input[type="date"] {
+  padding: 10px;
+}
+
+form button {
   background-color: #4CAF50;
   color: white;
   border: none;
-  border-radius: 4px;
+  padding: 12px 24px;
+  margin-top: 10px;
+  font-size: 1rem;
+  border-radius: 5px;
   cursor: pointer;
-  font-size: 1.1em;
+  width: 100%;
 }
 
-.add-movie-form button:hover {
+form button:hover {
   background-color: #45a049;
 }
 
-/* Movies Table */
+/* Table Styling */
 .movies-table {
-  width: 80%;
-  margin: 0 auto;
+  width: 100%;
   border-collapse: collapse;
-  margin-top: 30px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-top: 20px;
 }
 
-.movies-table th, .movies-table td {
-  padding: 12px 15px;
-  border: 1px solid #ddd;
+.movies-table th,
+.movies-table td {
+  padding: 12px;
   text-align: left;
-  font-size: 1.1em;
+  border-bottom: 1px solid #ddd;
 }
 
 .movies-table th {
-  background-color: #4CAF50;
-  color: white;
+  background-color: #f2f2f2;
+  color: #444;
 }
 
 .movies-table tr:nth-child(even) {
-  background-color: #f2f2f2;
+  background-color: #fafafa;
 }
 
 .movies-table tr:hover {
-  background-color: #ddd;
+  background-color: #f1f1f1;
 }
 
-.movies-table td {
-  font-size: 1em;
+/* Delete Button Styling */
+.delete-btn {
+  background-color: #e74c3c;
+  color: white;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 0.9rem;
 }
 
-/* Error Message */
+.delete-btn:hover {
+  background-color: #c0392b;
+}
+
+.delete-btn:focus {
+  outline: none;
+}
+
+/* Error message */
 .error {
-  color: red;
+  color: #e74c3c;
   font-weight: bold;
   margin-top: 20px;
-  font-size: 1.2em;
+  text-align: center;
 }
 
-/* Loading Spinner */
+/* Loading Indicator */
 .loading {
-  font-size: 1.5em;
-  color: #4CAF50;
-  margin-top: 20px;
+  text-align: center;
+  font-size: 1.2rem;
+  color: #888;
 }

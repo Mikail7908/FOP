@@ -7,13 +7,12 @@ function App() {
   const [loadingMovies, setLoadingMovies] = useState(false);
   const [error, setError] = useState(null);
 
-  // Form fields for adding a movie
   const [newMovie, setNewMovie] = useState({
     movie_name: '',
-    director: '',
     genre: '',
-    release_date: '',
-    length: ''
+    director: '',
+    length: '',
+    release_date: ''
   });
 
   useEffect(() => {
@@ -47,7 +46,7 @@ function App() {
     });
   }
 
-  // Handle form submission
+  // Handle form submission for adding a new movie
   function handleFormSubmit(event) {
     event.preventDefault();
     axios
@@ -56,16 +55,30 @@ function App() {
         console.log('Movie added:', response.data);
         setNewMovie({
           movie_name: '',
-          director: '',
           genre: '',
-          release_date: '',
-          length: ''
+          director: '',
+          length: '',
+          release_date: ''
         });
         getMoviesData(); // Refresh the movie list after adding a new movie
       })
       .catch((error) => {
         console.error('Error adding movie:', error);
         setError('Failed to add movie. Please try again later.');
+      });
+  }
+
+  // Delete a movie from the table
+  function handleDeleteMovie(movieId) {
+    axios
+      .delete(`http://127.0.0.1:5000/movies/${movieId}`)
+      .then((response) => {
+        console.log(response.data.message);
+        getMoviesData(); // Refresh the movie list after deleting
+      })
+      .catch((error) => {
+        console.error('Error deleting movie:', error);
+        setError('Failed to delete movie. Please try again later.');
       });
   }
 
@@ -108,7 +121,6 @@ function App() {
               placeholder="Length"
               value={newMovie.length}
               onChange={handleInputChange}
-              required
             />
             <input
               type="date"
@@ -137,6 +149,7 @@ function App() {
                   <th>Genre</th>
                   <th>Length</th>
                   <th>Release Date</th>
+                  <th>Actions</th>
                 </tr>
               </thead>
               <tbody>
@@ -147,6 +160,14 @@ function App() {
                     <td>{movie.genre}</td>
                     <td>{movie.length || 'N/A'}</td>
                     <td>{movie.release_date}</td>
+                    <td>
+                      <button
+                        onClick={() => handleDeleteMovie(movie.movie_ID)}
+                        className="delete-btn"
+                      >
+                        Delete
+                      </button>
+                    </td>
                   </tr>
                 ))}
               </tbody>

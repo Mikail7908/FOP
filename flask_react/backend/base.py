@@ -37,6 +37,16 @@ def movies():
         conn.close()
         
         return jsonify({'message': 'Movie added successfully!'}), 201
+    
+@app.route('/movies/<int:movie_id>', methods=['DELETE'])
+def delete_movie(movie_id):
+    # Delete movie from the database using the movie_ID
+    conn = get_db_connection()
+    conn.execute('DELETE FROM test WHERE movie_ID = ?', (movie_id,))
+    conn.commit()
+    conn.close()
+
+    return jsonify({'message': f'Movie with ID {movie_id} deleted successfully!'}), 200
 
 if __name__ == "__main__":
     app.run(debug=True)
