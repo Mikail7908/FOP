@@ -1,67 +1,108 @@
 /* General styles */
 .App {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh; /* Center vertically */
-  background-color: #f4f4f4;
+  font-family: Arial, sans-serif;
+  text-align: center;
+  padding: 20px;
 }
 
 .App-header {
-  text-align: center;
-  background-color: #fff;
-  border-radius: 8px;
+  background-color: #282c34;
+  color: white;
   padding: 20px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  width: 90%;
-  max-width: 1000px;
+  margin-bottom: 20px;
 }
 
 h1 {
   font-size: 2.5em;
-  color: #333;
-  margin-bottom: 20px;
+  margin-bottom: 0.5em;
 }
 
-.movies-section {
+h2 {
+  font-size: 1.5em;
+  margin-top: 0;
+}
+
+/* Add Movie Form */
+.add-movie-form {
+  background-color: #f9f9f9;
   padding: 20px;
-  text-align: left;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 30px;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-.movies-section h2 {
-  font-size: 1.8em;
-  color: #333;
-  margin-bottom: 15px;
-}
-
-.movies-table {
+.add-movie-form input {
   width: 100%;
-  border-collapse: collapse;
-  margin-top: 20px;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  font-size: 1em;
 }
 
-.movies-table th,
-.movies-table td {
+.add-movie-form button {
+  width: 100%;
   padding: 12px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1.1em;
+}
+
+.add-movie-form button:hover {
+  background-color: #45a049;
+}
+
+/* Movies Table */
+.movies-table {
+  width: 80%;
+  margin: 0 auto;
+  border-collapse: collapse;
+  margin-top: 30px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.movies-table th, .movies-table td {
+  padding: 12px 15px;
+  border: 1px solid #ddd;
   text-align: left;
-  border-bottom: 1px solid #ddd;
+  font-size: 1.1em;
 }
 
 .movies-table th {
-  background-color: #6200ea;
+  background-color: #4CAF50;
   color: white;
-  font-size: 1.1em;
+}
+
+.movies-table tr:nth-child(even) {
+  background-color: #f2f2f2;
 }
 
 .movies-table tr:hover {
-  background-color: #f1f1f1;
+  background-color: #ddd;
 }
 
 .movies-table td {
-  font-size: 1.1em;
+  font-size: 1em;
 }
 
-p {
+/* Error Message */
+.error {
+  color: red;
+  font-weight: bold;
+  margin-top: 20px;
   font-size: 1.2em;
-  color: #777;
+}
+
+/* Loading Spinner */
+.loading {
+  font-size: 1.5em;
+  color: #4CAF50;
+  margin-top: 20px;
 }
