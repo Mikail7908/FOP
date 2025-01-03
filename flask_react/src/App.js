@@ -15,6 +15,9 @@ function App() {
     release_date: ''
   });
 
+  const [searchQuery, setSearchQuery] = useState('');
+  const [sortBy, setSortBy] = useState('movie_name'); // Default sorting by movie name
+
   useEffect(() => {
     getMoviesData();
   }, []);
@@ -82,6 +85,27 @@ function App() {
       });
   }
 
+  // Handle search input
+  const handleSearchChange = (event) => {
+    setSearchQuery(event.target.value);
+  };
+
+  // Handle sort selection
+  const handleSortChange = (event) => {
+    setSortBy(event.target.value);
+  };
+
+  // Filter and sort movies
+  const filteredAndSortedMovies = moviesData
+    .filter((movie) =>
+      movie.movie_name.toLowerCase().includes(searchQuery.toLowerCase())
+    )
+    .sort((a, b) => {
+      if (a[sortBy] < b[sortBy]) return -1;
+      if (a[sortBy] > b[sortBy]) return 1;
+      return 0;
+    });
+
   return (
     <div className="App">
       <header className="App-header">
@@ -133,6 +157,23 @@ function App() {
           </form>
         </div>
 
+        {/* Search and Sort Controls */}
+        <div className="filter-container">
+          <input
+            type="text"
+            placeholder="Search movies..."
+            value={searchQuery}
+            onChange={handleSearchChange}
+            className="search-input"
+          />
+          <select value={sortBy} onChange={handleSortChange} className="sort-select">
+            <option value="movie_name">Movie Name</option>
+            <option value="director">Director</option>
+            <option value="genre">Genre</option>
+            <option value="release_date">Release Date</option>
+          </select>
+        </div>
+
         <div className="movies-section">
           <h2>Movies Data</h2>
 
@@ -140,7 +181,7 @@ function App() {
             <p>Loading...</p>
           ) : error ? (
             <p className="error">{error}</p>
-          ) : moviesData.length > 0 ? (
+          ) : filteredAndSortedMovies.length > 0 ? (
             <table className="movies-table">
               <thead>
                 <tr>
@@ -153,7 +194,7 @@ function App() {
                 </tr>
               </thead>
               <tbody>
-                {moviesData.map((movie) => (
+                {filteredAndSortedMovies.map((movie) => (
                   <tr key={movie.movie_ID}>
                     <td>{movie.movie_name}</td>
                     <td>{movie.director || 'N/A'}</td>

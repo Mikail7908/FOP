@@ -66,6 +66,32 @@ form button:hover {
   background-color: #45a049;
 }
 
+/* Search and Sort Styling */
+.filter-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.search-input {
+  width: 70%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 1rem;
+}
+
+.sort-select {
+  width: 25%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 1rem;
+  background-color: #fff;
+  cursor: pointer;
+}
+
 /* Table Styling */
 .movies-table {
   width: 100%;
