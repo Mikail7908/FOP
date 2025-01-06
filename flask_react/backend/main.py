@@ -17,10 +17,3 @@ class Director(Movie):
         super().__init__()
         self.director_name = director_name
 
-conn = base.get_db_connection()
-conn = conn.cursor()
-for row in conn.execute("SELECT movie_name, director FROM test ORDER BY movie_ID"):
-    print(row)
-MyMovie = Movie('The Dark Knight', 'Action', '2008')
-MyActor = Actor('Christian Bale')
-MyDirector = Director('Christopher Nolan')
