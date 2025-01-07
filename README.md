@@ -1,7 +1,7 @@
-How to run:
+#How to run:
+- install npm
 - install sqlite3
 - run first 2 queries in statements.sql
-- install npm
 - install requirements.txt
 - open 2 seperate shells
 - 1st one command "flask run"
