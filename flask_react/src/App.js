@@ -15,6 +15,17 @@ function App() {
     release_date: ''
   });
 
+  const [editedMovie, setEditedMovie] = useState({
+    movie_ID: '',
+    movie_name: '',
+    genre: '',
+    director: '',
+    length: '',
+    release_date: ''
+  });
+
+  const [editingRowId, setEditingRowId] = useState(null);
+
   const [searchQuery, setSearchQuery] = useState('');
   const [sortBy, setSortBy] = useState('movie_name'); // Default sorting by movie name
 
@@ -69,6 +80,48 @@ function App() {
         console.error('Error adding movie:', error);
         setError('Failed to add movie. Please try again later.');
       });
+  }
+
+  // Start editing a row
+  function handleEditRow(movie) {
+    setEditingRowId(movie.movie_ID);
+    setEditedMovie(movie); // Initialize with the current movie data
+  }
+
+  // Handle changes to the editable row
+  function handleEditChange(event) {
+    const { name, value } = event.target;
+    setEditedMovie({
+      ...editedMovie,
+      [name]: value,
+    });
+  }
+
+  // Save changes to the backend
+  function handleSaveEdit() {
+    // Make sure editedMovie contains the updated fields (movie_ID included)
+    if (editedMovie.movie_ID) {
+      axios
+        .put(`http://127.0.0.1:5000/movies/${editingRowId}`, editedMovie)  // using movie_ID here
+        .then((response) => {
+          console.log('Movie updated:', response.data);
+          setEditingRowId(null); // Exit edit mode
+          getMoviesData(); // Refresh the movie list
+        })
+        .catch((error) => {
+          console.error('Error updating movie:', error);
+          setError('Failed to update movie. Please try again later.');
+        });
+    } else {
+      console.log("Movie ID missing in edited movie data.");
+    }
+  }
+
+
+  // Cancel editing
+  function handleCancelEdit() {
+    setEditingRowId(null);
+    setEditedMovie({});
   }
 
   // Delete a movie from the table
@@ -185,6 +238,7 @@ function App() {
             <table className="movies-table">
               <thead>
                 <tr>
+                  <th>Movie ID</th>
                   <th>Movie Name</th>
                   <th>Director</th>
                   <th>Genre</th>
@@ -196,12 +250,19 @@ function App() {
               <tbody>
                 {filteredAndSortedMovies.map((movie) => (
                   <tr key={movie.movie_ID}>
+                    <td>{movie.movie_ID}</td> {/* Displaying Movie ID */}
                     <td>{movie.movie_name}</td>
                     <td>{movie.director || 'N/A'}</td>
                     <td>{movie.genre}</td>
                     <td>{movie.length || 'N/A'}</td>
                     <td>{movie.release_date}</td>
                     <td>
+                      <button
+                        onClick={() => handleEditRow(movie)}
+                        className="edit-btn"
+                      >
+                        Edit
+                      </button>
                       <button
                         onClick={() => handleDeleteMovie(movie.movie_ID)}
                         className="delete-btn"
@@ -217,6 +278,53 @@ function App() {
             <p>No movies data available.</p>
           )}
         </div>
+
+        {/* Edit Movie Form */}
+        {editingRowId && (
+          <div className="edit-movie-form">
+            <h2>Edit Movie (ID: {editingRowId})</h2>
+            <form onSubmit={handleSaveEdit}>
+              <input
+                type="text"
+                name="movie_name"
+                value={editedMovie.movie_name}
+                onChange={handleEditChange}
+                required
+              />
+              <input
+                type="text"
+                name="genre"
+                value={editedMovie.genre}
+                onChange={handleEditChange}
+                required
+              />
+              <input
+                type="text"
+                name="director"
+                value={editedMovie.director}
+                onChange={handleEditChange}
+                required
+              />
+              <input
+                type="text"
+                name="length"
+                value={editedMovie.length}
+                onChange={handleEditChange}
+              />
+              <input
+                type="date"
+                name="release_date"
+                value={editedMovie.release_date}
+                onChange={handleEditChange}
+                required
+              />
+              <button type="submit">Save Changes</button>
+              <button type="button" onClick={handleCancelEdit}>
+                Cancel
+              </button>
+            </form>
+          </div>
+        )}
       </header>
     </div>
   );
