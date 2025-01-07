@@ -56,6 +56,14 @@ class MovieManager:
         conn.commit()
         conn.close()
         return {'message': 'Movie updated successfully!'}, 200
+    
+    def renumber_ids(self, conn):
+        """Renumber movie_IDs before I go crazy and see the smallest number being 20"""
+        movies = conn.execute('SELECT * FROM test ORDER BY movie_ID').fetchall()
+        for new_id, movie in enumerate(movies, start=1):
+            conn.execute('UPDATE test SET movie_ID = ? WHERE movie_ID = ?', (new_id, movie['movie_ID']))
+        conn.commit()
+
 
     def delete_movie(self, movie_id):
         conn = self.db_manager.get_connection()
@@ -65,6 +73,7 @@ class MovieManager:
             return {'error': 'Movie not found'}, 404  # Movie not found
 
         conn.commit()
+        self.renumber_ids(conn)
         conn.close()
         return {'message': f'Movie with ID {movie_id} deleted successfully!'}, 200
 
