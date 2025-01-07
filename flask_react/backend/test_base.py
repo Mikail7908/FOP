@@ -10,9 +10,9 @@ class TestMovieApp(unittest.TestCase):
 
         # Setup test database
         conn = cls.db_manager.get_connection()
-        conn.execute('DROP TABLE IF EXISTS test_db')
+        conn.execute('DROP TABLE IF EXISTS test')
         conn.execute('''
-            CREATE TABLE test_db (
+            CREATE TABLE test (
                 movie_ID INTEGER PRIMARY KEY AUTOINCREMENT,
                 movie_name TEXT NOT NULL,
                 director TEXT NOT NULL,
