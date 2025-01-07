@@ -2,10 +2,6 @@ from flask import Flask, jsonify, request
 from flask_cors import CORS
 import sqlite3
 
-
-
-
-
 class DatabaseManager:
     def __init__(self, db_name):
         self.db_name = db_name
@@ -33,14 +29,16 @@ class MovieManager:
             return {'error': 'Missing required fields'}, 400
 
         conn = self.db_manager.get_connection()
-        conn.execute(
+        cursor = conn.execute(
             'INSERT INTO test (movie_name, director, genre, release_date, length) VALUES (?, ?, ?, ?, ?)',
             (movie_data['movie_name'], movie_data['director'], movie_data['genre'], 
-             movie_data['release_date'], movie_data['length'])
+            movie_data['release_date'], movie_data['length'])
         )
+        movie_id = cursor.lastrowid  # Retrieve the auto-generated movie_ID
         conn.commit()
         conn.close()
-        return {'message': 'Movie added successfully!'}, 201
+
+        return {'message': 'Movie added successfully!', 'movie_ID': movie_id}, 201
 
     def delete_movie(self, movie_id):
         conn = self.db_manager.get_connection()
