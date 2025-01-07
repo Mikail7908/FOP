@@ -1,4 +1,4 @@
-#How to run:
+How to run:
 - install npm
 - install sqlite3
 - run first 2 queries in statements.sql
