@@ -27,14 +27,15 @@ class MovieManager:
             return {'error': 'Missing required fields'}, 400
 
         conn = self.db_manager.get_connection()
-        conn.execute(
+        cursor = conn.execute(
             'INSERT INTO test (movie_name, director, genre, release_date, length) VALUES (?, ?, ?, ?, ?)',
             (movie_data['movie_name'], movie_data['director'], movie_data['genre'], 
-             movie_data['release_date'], movie_data['length'])
+            movie_data['release_date'], movie_data['length'])
         )
         conn.commit()
+        movie_id = cursor.lastrowid  # Get the ID of the newly inserted movie
         conn.close()
-        return {'message': 'Movie added successfully!'}, 201
+        return {'message': 'Movie added successfully!', 'movie_ID': movie_id}, 201
 
     def update_movie(self, movie_id, movie_data):
         required_fields = ['movie_name', 'director', 'genre', 'release_date', 'length']
@@ -68,12 +69,11 @@ class MovieManager:
     def delete_movie(self, movie_id):
         conn = self.db_manager.get_connection()
         cursor = conn.execute('DELETE FROM test WHERE movie_ID = ?', (movie_id,))
-        
-        if cursor.rowcount == 0:
-            return {'error': 'Movie not found'}, 404  # Movie not found
+        if cursor.rowcount == 0:  # Check if a movie was actually deleted
+            conn.close()
+            return {'error': 'Movie not found'}, 404
 
         conn.commit()
-        self.renumber_ids(conn)
         conn.close()
         return {'message': f'Movie with ID {movie_id} deleted successfully!'}, 200
 
