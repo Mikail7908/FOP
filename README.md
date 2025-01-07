@@ -6,4 +6,4 @@ How to run:
 - open 2 seperate shells
 - 1st one command "flask run"
 - 2nd one command "npm start"
-program shoud run
+- program should run
