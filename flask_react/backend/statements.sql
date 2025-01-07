@@ -3,7 +3,7 @@ CREATE TABLE IF NOT EXISTS test (
     movie_name TEXT NOT NULL,
     director TEXT NOT NULL,
     genre TEXT NOT NULL,
-    release_date TEXt NOT NULL,
+    release_date TEXT NOT NULL,
     length TEXT NOT NULL
 );
 
