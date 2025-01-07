@@ -224,6 +224,7 @@ function App() {
             <option value="director">Director</option>
             <option value="genre">Genre</option>
             <option value="release_date">Release Date</option>
+            <option value="movie_ID">movie_ID</option>
           </select>
         </div>
 
