@@ -1,39 +1,98 @@
-/* General styles */
-.App {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh; /* Center vertically */
-  background-color: #f4f4f4;
+/* General Styling */
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #f4f7fc;
+  color: #333;
+  margin: 0;
+  padding: 0;
 }
 
-.App-header {
-  text-align: center;
-  background-color: #fff;
-  border-radius: 8px;
-  padding: 20px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  width: 90%;
+.App {
   max-width: 1000px;
+  margin: 30px auto;
+  padding: 20px;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 h1 {
   font-size: 2.5em;
   color: #333;
+  text-align: center;
   margin-bottom: 20px;
 }
 
-.movies-section {
-  padding: 20px;
-  text-align: left;
+h2 {
+  font-size: 1.5em;
+  color: #555;
+  margin-bottom: 10px;
+  border-bottom: 2px solid #eee;
+  padding-bottom: 5px;
 }
 
-.movies-section h2 {
-  font-size: 1.8em;
-  color: #333;
-  margin-bottom: 15px;
+/* Form Styling */
+.add-movie-form {
+  margin-bottom: 30px;
 }
 
+form input {
+  width: 100%;
+  padding: 12px;
+  margin: 8px 0;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 1rem;
+  box-sizing: border-box;
+}
+
+form input[type="date"] {
+  padding: 10px;
+}
+
+form button {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  margin-top: 10px;
+  font-size: 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 100%;
+}
+
+form button:hover {
+  background-color: #45a049;
+}
+
+/* Search and Sort Styling */
+.filter-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.search-input {
+  width: 70%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 1rem;
+}
+
+.sort-select {
+  width: 25%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 1rem;
+  background-color: #fff;
+  cursor: pointer;
+}
+
+/* Table Styling */
 .movies-table {
   width: 100%;
   border-collapse: collapse;
@@ -48,20 +107,100 @@ h1 {
 }
 
 .movies-table th {
-  background-color: #6200ea;
-  color: white;
-  font-size: 1.1em;
+  background-color: #f2f2f2;
+  color: #444;
+}
+
+.movies-table tr:nth-child(even) {
+  background-color: #fafafa;
 }
 
 .movies-table tr:hover {
   background-color: #f1f1f1;
 }
 
-.movies-table td {
-  font-size: 1.1em;
+/* Edit Mode Styling */
+.editing-row {
+  background-color: #e6f7ff; /* Light blue background for edited rows */
 }
 
-p {
-  font-size: 1.2em;
-  color: #777;
+.editing-row input {
+  background-color: #e0f0ff; /* Light blue input fields */
+  border: 1px solid #8cbdff;
+}
+
+.edit-btn {
+  background-color: #3498db;
+  color: white;
+  padding: 6px 12px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+.edit-btn:hover {
+  background-color: #2980b9;
+}
+
+.save-btn {
+  background-color: #4CAF50;
+  color: white;
+  padding: 6px 12px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+.save-btn:hover {
+  background-color: #45a049;
+}
+
+.cancel-btn {
+  background-color: #e74c3c;
+  color: white;
+  padding: 6px 12px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+.cancel-btn:hover {
+  background-color: #c0392b;
+}
+
+/* Delete Button Styling */
+.delete-btn {
+  background-color: #e74c3c;
+  color: white;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+.delete-btn:hover {
+  background-color: #c0392b;
+}
+
+.delete-btn:focus {
+  outline: none;
+}
+
+/* Error Message */
+.error {
+  color: #e74c3c;
+  font-weight: bold;
+  margin-top: 20px;
+  text-align: center;
+}
+
+/* Loading Indicator */
+.loading {
+  text-align: center;
+  font-size: 1.2rem;
+  color: #888;
 }

@@ -3,7 +3,7 @@ CREATE TABLE IF NOT EXISTS test (
     movie_name TEXT NOT NULL,
     director TEXT NOT NULL,
     genre TEXT NOT NULL,
-    release_date TEXt NOT NULL,
+    release_date TEXT NOT NULL,
     length TEXT NOT NULL
 );
 
@@ -19,3 +19,5 @@ VALUES
 ("The Avengers: Age of Ultron", "Anothony Russo","Fantasy","2010","2:45"),
 ("The Avengers: Infinity War", "Anothony Russo","Fantasy","2009","2:45"),
 ("The Avengers: Endgame", "Anothony Russo","Fantasy","2008","2:45");
+
+DROP TABLE IF EXISTS test;
