@@ -162,7 +162,7 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <h1>Movies List</h1>
+        <h1>Mikail's Movie Collection Manager</h1>
 
         {/* Add Movie Form */}
         <div className="add-movie-form">
@@ -224,12 +224,12 @@ function App() {
             <option value="director">Director</option>
             <option value="genre">Genre</option>
             <option value="release_date">Release Date</option>
-            <option value="movie_ID">movie_ID</option>
+            <option value="Movie ID">movie_ID</option>
           </select>
         </div>
 
         <div className="movies-section">
-          <h2>Movies Data</h2>
+          <h2>Movie List</h2>
 
           {loadingMovies ? (
             <p>Loading...</p>

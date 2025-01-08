@@ -1,0 +1,16 @@
+[
+    {
+        "movie_name": "Inception",
+        "director": "Christopher Nolan",
+        "genre": "Sci-Fi",
+        "release_date": "2010",
+        "length": "2:45"
+    },
+    {
+        "movie_name": "The Dark Knight",
+        "director": "Christopher Nolan",
+        "genre": "Action",
+        "release_date": "2008",
+        "length": "2:32"
+    }
+]
