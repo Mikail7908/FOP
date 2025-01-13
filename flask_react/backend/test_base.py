@@ -87,7 +87,7 @@ class TestMovieApp(unittest.TestCase):
     def tearDownClass(cls):
         # Clean up test database
         conn = cls.db_manager.get_connection()
-        conn.execute('DROP TABLE IF EXISTS test_movie')
+        conn.execute('DROP TABLE IF EXISTS test')
         conn.commit()
         conn.close()
 
