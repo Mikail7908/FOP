@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
+import Analytics from "./Analytics";
 import './App.css';
 
 function App() {
@@ -326,6 +327,9 @@ function App() {
             </form>
           </div>
         )}
+        <div className="analytics-section">
+            <Analytics movies={moviesData} />
+        </div>
       </header>
     </div>
   );
