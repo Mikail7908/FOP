@@ -2,6 +2,7 @@ import unittest
 import json
 from base import app, DatabaseManager
 
+
 class TestMovieApp(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
