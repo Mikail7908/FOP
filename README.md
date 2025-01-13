@@ -1,5 +1,7 @@
 I can now sleep.
 
+if you want to run the test file make sure you are in FOP/flask_react/backend
+
 How to run:
 - install npm
 - install sqlite3
