@@ -1,0 +1,58 @@
+/* Analytics.css */
+
+.analytics-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  .analytics-container h2,
+  .analytics-container h3 {
+    text-align: center;
+  }
+  
+  .analytics-container .charts {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+  }
+  
+  .analytics-container .chart {
+    flex: 1 1 300px;
+    max-width: 400px;
+    min-width: 300px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 20px;
+    background-color: #f9f9f9;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  .analytics-container .chart canvas {
+    width: 100% !important;
+    height: auto !important;
+  }
+  
+  .pivot-table-container {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #ffffff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  .pivot-table-container table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+  
+  .pivot-table-container th,
+  .pivot-table-container td {
+    text-align: left;
+    padding: 10px;
+    border: 1px solid #ddd;
+  }  
