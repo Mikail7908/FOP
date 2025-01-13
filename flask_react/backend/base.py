@@ -11,6 +11,7 @@ class DatabaseManager:
         conn.row_factory = sqlite3.Row
         return conn
 
+
 class MovieManager:
     def __init__(self, db_manager):
         self.db_manager = db_manager
